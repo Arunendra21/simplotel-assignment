@@ -1,0 +1,18 @@
+# One-click deploy blueprint for Render (https://render.com).
+# Builds the frontend, then runs the Express backend which serves both the
+# built frontend and the /api routes as a single web service — one public URL.
+#
+# The app runs fully in deterministic mode with no API key. To let an LLM
+# phrase the (still grounded) answers, add ANTHROPIC_API_KEY or OPENAI_API_KEY
+# in the Render dashboard after the first deploy.
+services:
+  - type: web
+    name: seabreeze-harbour-assistant
+    runtime: node
+    plan: free
+    buildCommand: cd frontend && npm ci && npm run build && cd ../backend && npm ci
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"

@@ -172,6 +172,28 @@ map to the scenario checklist.
 
 ---
 
+## Deploying (single service)
+
+In production the Express backend also serves the built frontend, so the whole
+app is one web service behind one URL (the frontend still calls `/api` on the
+same origin — no API base URL or keys in the client).
+
+Build once, then start the backend:
+
+```bash
+cd frontend && npm ci && npm run build     # emits frontend/dist
+cd ../backend && npm ci && npm start        # serves the API + the built UI
+```
+
+### One-click deploy to Render
+
+This repo ships a [`render.yaml`](render.yaml) blueprint. On
+[render.com](https://render.com): **New → Blueprint**, point it at this repo,
+and Render builds the frontend and runs the backend as a single free web
+service. It reads `PORT` from the environment automatically and health-checks
+`/api/health`. No API key is required; add `ANTHROPIC_API_KEY` or
+`OPENAI_API_KEY` in the dashboard later to enable LLM phrasing.
+
 ## Notes & limitations
 
 - Availability is a deterministic mock — a room's status depends only on its id and the

@@ -1,5 +1,8 @@
 # Seabreeze Harbour — AI Guest Assistant
 
+**Live demo:** https://seabreeze-harbour-assistant.onrender.com
+*(free instance — the first request after it's been idle can take ~50s to wake, then it's snappy.)*
+
 A small full-stack app that lets a hotel guest ask questions about the property and
 check room availability from a chat window. It answers property, amenity and policy
 questions from a hotel knowledge base, recognises when someone is really asking about

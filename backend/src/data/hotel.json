@@ -1,0 +1,111 @@
+{
+  "property": {
+    "name": "Seabreeze Harbour Hotel",
+    "tagline": "A quiet harbour-front stay in Fort Kochi",
+    "location": {
+      "address": "17 Bastion Quay, Fort Kochi, Kerala 682001, India",
+      "landmark": "A 4-minute walk from the Chinese Fishing Nets",
+      "city": "Kochi"
+    },
+    "contact": {
+      "phone": "+91 484 555 0142",
+      "email": "stay@seabreezeharbour.example",
+      "reception_hours": "24 hours"
+    },
+    "currency": "INR",
+    "languages_spoken": ["English", "Malayalam", "Hindi"]
+  },
+
+  "policies": {
+    "check_in_time": "2:00 PM",
+    "check_out_time": "11:00 AM",
+    "early_check_in": "Subject to availability. Guaranteed early check-in can be pre-booked for INR 1,500.",
+    "late_check_out": "Until 1:00 PM is complimentary when the room is free; later than that is charged as a half-day.",
+    "cancellation": "Free cancellation up to 48 hours before the check-in date. Cancellations inside 48 hours are charged one night's room rate.",
+    "no_show": "A no-show is charged the full first night.",
+    "children": "Children of all ages are welcome. Under-6s stay free using existing bedding.",
+    "extra_bed": "One extra bed can be added to most rooms for INR 900 per night.",
+    "pets": "We are not able to accommodate pets, with the exception of registered service animals.",
+    "smoking": "All rooms are non-smoking. Smoking is permitted only in the courtyard area.",
+    "payment_methods": ["Visa", "Mastercard", "UPI", "Cash (INR)"],
+    "id_requirement": "A government-issued photo ID is required at check-in for every adult guest."
+  },
+
+  "amenities": [
+    { "name": "Outdoor swimming pool", "detail": "Open 6:00 AM to 8:00 PM, heated in winter.", "tags": ["pool", "swimming pool", "swim"] },
+    { "name": "Rooftop restaurant", "detail": "Harbour Table serves Kerala and continental dishes, 7:00 AM to 10:30 PM.", "tags": ["restaurant", "dining", "food", "dinner"] },
+    { "name": "Breakfast", "detail": "A South Indian and continental buffet is served 7:00 AM to 10:00 AM.", "tags": ["breakfast", "buffet"] },
+    { "name": "Free Wi-Fi", "detail": "Complimentary high-speed Wi-Fi throughout the property.", "tags": ["wifi", "wi-fi", "internet"] },
+    { "name": "Fitness room", "detail": "A compact gym with cardio machines and free weights, open 24 hours.", "tags": ["gym", "fitness", "workout"] },
+    { "name": "Spa", "detail": "Ayurvedic treatments by appointment, 10:00 AM to 7:00 PM.", "tags": ["spa", "massage", "ayurveda"] },
+    { "name": "Airport shuttle", "detail": "A private shuttle to Cochin International Airport can be arranged for INR 1,800 each way.", "tags": ["airport", "shuttle", "transfer", "pickup"] },
+    { "name": "On-site parking", "detail": "Free self-parking is available for in-house guests.", "tags": ["parking", "car"] },
+    { "name": "Laundry", "detail": "Same-day laundry and pressing service, charged per item.", "tags": ["laundry", "washing"] }
+  ],
+
+  "room_types": [
+    {
+      "id": "harbour-twin",
+      "name": "Harbour Twin",
+      "description": "A bright room with two single beds and a partial harbour view.",
+      "max_adults": 2,
+      "beds": "Two single beds",
+      "size_sqm": 24,
+      "nightly_rate": 4200,
+      "breakfast_included": false
+    },
+    {
+      "id": "courtyard-queen",
+      "name": "Courtyard Queen",
+      "description": "A quiet queen room overlooking the inner courtyard.",
+      "max_adults": 2,
+      "beds": "One queen bed",
+      "size_sqm": 26,
+      "nightly_rate": 5200,
+      "breakfast_included": true
+    },
+    {
+      "id": "backwater-suite",
+      "name": "Backwater Suite",
+      "description": "A spacious suite with a separate sitting area and a full harbour view. Comfortable for a small family.",
+      "max_adults": 3,
+      "beds": "One king bed plus a sofa bed",
+      "size_sqm": 42,
+      "nightly_rate": 8900,
+      "breakfast_included": true
+    },
+    {
+      "id": "family-loft",
+      "name": "Family Loft",
+      "description": "A two-level loft that sleeps a larger family, with a kitchenette.",
+      "max_adults": 4,
+      "beds": "One king bed and two single beds",
+      "size_sqm": 55,
+      "nightly_rate": 11500,
+      "breakfast_included": true
+    }
+  ],
+
+  "faqs": [
+    {
+      "id": "faq-breakfast",
+      "questions": ["is breakfast included", "do you serve breakfast", "breakfast timing"],
+      "answer": "Breakfast is served as a buffet from 7:00 AM to 10:00 AM at our rooftop restaurant. It is included with the Courtyard Queen, Backwater Suite and Family Loft rates; for the Harbour Twin it can be added for INR 650 per person."
+    },
+    {
+      "id": "faq-parking",
+      "questions": ["do you have parking", "where do i park", "is parking free"],
+      "answer": "Yes, free self-parking is available on-site for guests staying with us."
+    },
+    {
+      "id": "faq-late-arrival",
+      "questions": ["i will arrive late", "late night check in", "reception at night"],
+      "answer": "Reception is staffed 24 hours, so a late arrival is no problem. Just let us know your rough arrival time so we can keep the room ready."
+    },
+    {
+      "id": "faq-airport",
+      "questions": ["how far is the airport", "airport transfer", "how do i get from the airport"],
+      "answer": "Cochin International Airport is roughly 40 km away, about 60 to 75 minutes by road. We can arrange a private shuttle for INR 1,800 each way if you book it in advance."
+    }
+  ]
+}

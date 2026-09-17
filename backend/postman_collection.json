@@ -1,0 +1,91 @@
+{
+  "info": {
+    "name": "Seabreeze Harbour Assistant API",
+    "description": "Backend API for the Seabreeze Harbour hotel guest assistant. Base URL variable: {{baseUrl}} (default http://localhost:4000).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/api/health", "host": ["{{baseUrl}}"], "path": ["api", "health"] }
+      }
+    },
+    {
+      "name": "Chat - FAQ (check-in time)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"message\": \"What time is check-in?\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/chat", "host": ["{{baseUrl}}"], "path": ["api", "chat"] }
+      }
+    },
+    {
+      "name": "Chat - Capacity question",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"message\": \"Which room is suitable for three guests?\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/chat", "host": ["{{baseUrl}}"], "path": ["api", "chat"] }
+      }
+    },
+    {
+      "name": "Chat - Availability (single message)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"message\": \"Any rooms from 2099-06-10 to 2099-06-13 for 3 guests?\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/chat", "host": ["{{baseUrl}}"], "path": ["api", "chat"] }
+      }
+    },
+    {
+      "name": "Chat - Availability turn 1 (missing guests)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"message\": \"do you have rooms from 2099-06-10 to 2099-06-13?\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/chat", "host": ["{{baseUrl}}"], "path": ["api", "chat"] }
+      }
+    },
+    {
+      "name": "Chat - Availability turn 2 (replay context)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"message\": \"for 2 guests\",\n  \"context\": { \"slots\": { \"checkIn\": \"2099-06-10\", \"checkOut\": \"2099-06-13\" } }\n}" },
+        "url": { "raw": "{{baseUrl}}/api/chat", "host": ["{{baseUrl}}"], "path": ["api", "chat"] }
+      }
+    },
+    {
+      "name": "Chat - Fallback (out of scope)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"message\": \"can you get me concert tickets in the city?\"\n}" },
+        "url": { "raw": "{{baseUrl}}/api/chat", "host": ["{{baseUrl}}"], "path": ["api", "chat"] }
+      }
+    },
+    {
+      "name": "Availability - direct tool",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"checkIn\": \"2099-06-10\",\n  \"checkOut\": \"2099-06-13\",\n  \"adults\": 2\n}" },
+        "url": { "raw": "{{baseUrl}}/api/availability", "host": ["{{baseUrl}}"], "path": ["api", "availability"] }
+      }
+    },
+    {
+      "name": "Availability - validation error",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"checkIn\": \"2099-06-13\",\n  \"checkOut\": \"2099-06-10\",\n  \"adults\": 2\n}" },
+        "url": { "raw": "{{baseUrl}}/api/availability", "host": ["{{baseUrl}}"], "path": ["api", "availability"] }
+      }
+    }
+  ]
+}

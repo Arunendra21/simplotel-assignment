@@ -1,0 +1,203 @@
+:root {
+  --bg: #eef2f5;
+  --surface: #ffffff;
+  --ink: #17242e;
+  --muted: #6b7a86;
+  --line: #e2e8ed;
+  --accent: #0f766e;
+  --accent-ink: #ffffff;
+  --user-bubble: #0f766e;
+  --assistant-bubble: #f1f5f7;
+  --error: #b42318;
+  --error-bg: #fdecea;
+  --shadow: 0 1px 3px rgba(15, 35, 45, 0.08), 0 8px 24px rgba(15, 35, 45, 0.06);
+  --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 760px;
+  margin: 0 auto;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Top bar ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+.topbar__brand { display: flex; align-items: center; gap: 12px; }
+.topbar__logo {
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: #fff; font-weight: 700; letter-spacing: 0.5px;
+}
+.topbar h1 { font-size: 1.02rem; margin: 0; line-height: 1.2; }
+.topbar p { font-size: 0.78rem; margin: 2px 0 0; color: var(--muted); }
+.topbar__status { font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.status-dot--ok { background: #16a34a; }
+.status-dot--off { background: #cbd5e1; }
+
+/* ---------- Chat area ---------- */
+.chat { flex: 1; overflow-y: auto; padding: 20px 16px; }
+.chat__inner { display: flex; flex-direction: column; gap: 12px; }
+
+.bubble-row { display: flex; }
+.bubble-row--user { justify-content: flex-end; }
+.bubble-row--assistant { justify-content: flex-start; }
+
+.bubble {
+  max-width: 80%;
+  padding: 11px 15px;
+  border-radius: var(--radius);
+  line-height: 1.45;
+  font-size: 0.94rem;
+  white-space: normal;
+}
+.bubble p { margin: 0; }
+.bubble p + p { margin-top: 2px; }
+.bubble__spacer { height: 6px; }
+
+.bubble--assistant {
+  background: var(--assistant-bubble);
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+}
+.bubble--user {
+  background: var(--user-bubble);
+  color: var(--accent-ink);
+  border-bottom-right-radius: 4px;
+}
+.bubble--error {
+  background: var(--error-bg);
+  color: var(--error);
+  border: 1px solid #f6c9c4;
+}
+
+/* Typing indicator */
+.bubble--typing { display: flex; gap: 5px; align-items: center; }
+.dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--muted); opacity: 0.5;
+  animation: blink 1.3s infinite ease-in-out;
+}
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 0.9; } }
+
+/* ---------- Availability cards ---------- */
+.avail-result { margin-top: 10px; }
+.avail-result__summary { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
+.avail-result--empty { font-size: 0.9rem; color: var(--muted); }
+
+.room-cards { display: grid; gap: 10px; }
+.room-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.room-card__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.room-card__head h4 { margin: 0; font-size: 0.95rem; }
+.room-card__desc { margin: 6px 0; font-size: 0.85rem; color: var(--muted); }
+.room-card__meta { font-size: 0.78rem; color: var(--muted); display: flex; gap: 6px; }
+.room-card__price { margin-top: 8px; font-size: 0.95rem; }
+.room-card__price .muted { color: var(--muted); font-size: 0.82rem; }
+.badge { font-size: 0.68rem; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
+.badge--warn { background: #fff4e5; color: #b25e00; }
+
+/* ---------- Suggestions ---------- */
+.suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.chip {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--accent);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.chip:hover { background: #f0fdfa; border-color: #99f6e4; }
+
+/* ---------- Composer ---------- */
+.composer { border-top: 1px solid var(--line); padding: 12px 14px; background: var(--surface); }
+.composer__form { display: flex; gap: 8px; align-items: center; }
+.composer__input {
+  flex: 1;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-size: 0.94rem;
+  outline: none;
+}
+.composer__input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12); }
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn--primary { background: var(--accent); color: #fff; }
+.btn--primary:hover:not(:disabled) { background: #0d6a62; }
+.btn--ghost { background: transparent; color: var(--muted); }
+.btn--dates { background: #f0fdfa; color: var(--accent); border: 1px solid #99f6e4; white-space: nowrap; }
+
+/* ---------- Availability form ---------- */
+.avail-form { display: flex; flex-direction: column; gap: 12px; }
+.avail-form__row { display: flex; gap: 10px; }
+.field { display: flex; flex-direction: column; gap: 4px; flex: 1; font-size: 0.76rem; color: var(--muted); }
+.field input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 10px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+.field--guests { flex: 0 0 auto; }
+.stepper { display: flex; align-items: center; gap: 8px; }
+.stepper button {
+  width: 32px; height: 34px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.stepper output { min-width: 20px; text-align: center; font-size: 1rem; color: var(--ink); }
+.avail-form__actions { display: flex; justify-content: flex-end; gap: 8px; }
+.avail-form__error { color: var(--error); font-size: 0.8rem; margin: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .app { box-shadow: none; }
+  .bubble { max-width: 88%; }
+  .avail-form__row { flex-wrap: wrap; }
+  .field { min-width: 120px; }
+}

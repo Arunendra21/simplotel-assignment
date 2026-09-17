@@ -1,0 +1,17 @@
+# Dependencies
+**/node_modules/
+
+# Env / secrets
+**/.env
+**/.env.local
+
+# Build output
+frontend/dist/
+
+# Logs & coverage
+**/coverage/
+*.log
+npm-debug.log*
+
+# OS noise
+.DS_Store
